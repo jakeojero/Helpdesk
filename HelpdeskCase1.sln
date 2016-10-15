@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpdeskDAL", "HelpdeskDAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case1UnitTests", "Case1UnitTests\Case1UnitTests.csproj", "{E5E67ACA-722A-48C1-B473-35B56EB496B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpdeskViewModels", "HelpdeskViewModels\HelpdeskViewModels.csproj", "{48961EB0-3A04-4DC8-B36C-498BF3989E78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E5E67ACA-722A-48C1-B473-35B56EB496B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E67ACA-722A-48C1-B473-35B56EB496B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E67ACA-722A-48C1-B473-35B56EB496B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48961EB0-3A04-4DC8-B36C-498BF3989E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48961EB0-3A04-4DC8-B36C-498BF3989E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48961EB0-3A04-4DC8-B36C-498BF3989E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48961EB0-3A04-4DC8-B36C-498BF3989E78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
