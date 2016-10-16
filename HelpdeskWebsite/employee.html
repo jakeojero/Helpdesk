@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Editor</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="Content/favicon.ico" type="image/x-icon" />
+    <link href="modal-styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        body {
+            padding-top: 70px;
+            font-family: 'Lato', sans-serif;
+            font-size: 2em;
+           
+        }
+
+        @media (max-width: 979px) {
+            body {
+                padding-top: 30px;
+            }
+
+            #main {
+                font-size: 0.6em;
+             
+            }
+
+            .title {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
+                    <img style="width: 25px;max-width:100px; margin-top: 0px;"
+                         src="img/favicon.png">
+                </a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home.html">Home</a></li>
+                    <li class="active"><a href="/employee.html">Employees</a></li>
+                    <li><a href="/department.html">Departments</a></li>
+                    <li><a href="/problem.html">Problems</a></li>
+                    <li><a href="/util.html">Utilities</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-2">&nbsp;</div>
+
+
+
+    <div class="col-sm-8 col-xs-12 main-panel">
+
+        <div class="text-center row app-head" style="font-size:30px;font-weight:bold;">
+           Employees <i class="glyphicon glyphicon-user"></i>
+        </div>
+        &nbsp;
+        <div class="panel panel-info">
+            <div class="panel panel-heading">
+                <span class="msg" id="LabelStatus"></span>
+            </div>
+
+            <div class="panel-body">
+                <div id="main"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/employee.js"></script>
+
+
+    <div class="modal fade" data-backdrop="static" id="myModal">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 id="mainTitle">Edit Employee <i class="glyphicon glyphicon-pencil"></i></h1>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading text-center">
+                                Employee Information
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form id="EmployeeModalForm">
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Title:</div>
+                                        <div class="col-xs-9">
+                                            <input type="text" name="Title" placeholder="Enter Title" id="TextBoxTitle" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Firstname:</div>
+                                        <div class="col-xs-9">
+                                            <input type="text" name="Firstname" placeholder="Enter First Name" id="TextBoxFirstname" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Lastname:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Lastname" placeholder="Enter Last Name" id="TextBoxLastname" class="form-control" />
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Phone #:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Phone" placeholder="Enter Phone #" id="TextBoxPhone" class="form-control" />
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Email:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Email" placeholder="Enter E-Mail" id="TextBoxEmail" class="form-control" />
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Dept:</div>
+                                        <div class="col-xs-8">
+                                            <select id="ddlDepts" name="ddlDepts" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                    &nbsp;
+                                    <div class="form-group row">
+                                        <div class="col-xs-12">
+                                            <input type="submit" class="btn btn-lg btn-success" value="Update" id="ButtonAction" />
+                                            <input type="submit" class="btn btn-lg btn-danger pull-right" value="Delete" id="ButtonDelete" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        
+                        <div id="modalstatus" class="col-xs-4 text-left" style="margin-top:1%;"></div>
+
+                    </div>
+
+
+                </div>
+            </div>
+    </div>
+
+    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+                <div class="modal-title">Success</div>
+                <div id="modal-body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+
+    <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </div>
+                <div class="modal-title">Warning</div>
+
+                <div id="modal-body2" class="modal-body">Is something wrong?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+                </div>
+            </div> <!-- / .modal-content -->
+        </div> <!-- / .modal-dialog -->
+    </div>
+
+</body>
+</html>

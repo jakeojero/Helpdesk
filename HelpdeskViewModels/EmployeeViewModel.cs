@@ -65,6 +65,7 @@ namespace HelpdeskViewModels
             }
             catch(Exception ex)
             {
+                Id = "not found";
                 ViewModelUtils.ErrorRoutine(ex, "EmployeeViewModel", "GetById");
             }
         }
@@ -93,6 +94,11 @@ namespace HelpdeskViewModels
             }
 
             return Convert.ToInt16(opStatus);
+        }
+
+        public void GetById(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public void Create()

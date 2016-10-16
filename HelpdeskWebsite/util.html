@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Case 1 Utilities</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="icon" href="Content/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        body {
+          padding-top: 70px;
+          font-family: 'Lato', sans-serif;
+            font-size: 2em;
+        }
+        @media (max-width: 979px) {
+          body {
+            padding-top: 30px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
+                    <img style="width: 25px;max-width:100px; margin-top: 0px;"
+                         src="img/favicon.png">
+                </a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home.html">Home</a></li>
+                    <li><a href="/employee.html">Employees</a></li>
+                    <li><a href="/department.html">Departments</a></li>
+                    <li><a href="/problem.html">Problems</a></li>
+                    <li class="active"><a href="/util.html">Utilities</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-2">&nbsp;</div>
+    
+
+
+    <div class="col-sm-8 col-xs-12 main-panel">
+
+        <div class="text-center row app-head" style="font-size:30px;font-weight:bold;">
+             Utilities <i class="glyphicon glyphicon-cog"></i>
+        </div>
+        &nbsp;
+        <div class="panel panel-info">
+            <div class="panel panel-heading">
+                <span class="msg" id="LabelStatus"></span>
+            </div>
+
+            <div class="panel-body">
+                <div id="main"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/util.js"></script>
+</body>
+</html>
