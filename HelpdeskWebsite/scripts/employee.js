@@ -38,10 +38,21 @@
             return deleteEmp;
     });
 
+
+    $("#EmployeeModalForm").on("change paste keyup", function () {
+        $("#ButtonAction").prop("disabled", false);
+        $("#modalstatus").removeClass("alert alert-info");
+        $("#modalstatus").text("");
+    });
+
+    $("#EmployeeModalForm").change();
+
     $("#ButtonAction").click(function () {
         if ($("#ButtonAction").val() === "Update") {
             $("#modalstatus").text("Loading...");
+
             update();
+
             $("#modalstatus").text("");
         }
         else {
@@ -116,6 +127,9 @@ function getById(id) {
     ajaxCall("Get", "api/employees/" + id, "").done(function (data) {
         if (data.Id != "not found") {
             copyInfoToModal(data);
+            $("#ButtonAction").prop("disabled", true);
+            $("#modalstatus").addClass("alert alert-info");
+            $("#modalstatus").text("Change a field in the form in order to update!");
         }
         else {
             $("#modalstatus").text("Failed to Load that Employee!");
@@ -156,9 +170,41 @@ function loadDepartmentDDL(empdep) {
         alert("Error!");
     });
 }
+function validateEmployee() {
+    $('#EmployeeModalForm').validate({ // initialize the plugin
+        rules: {
+            Title: {
+                required: true,
+                maxlength: 4
+            },
+            Firstname: {
+                required: true,
+                minlength: 1
+            },
+            Lastname: {
+                required: true,
+                minlength: 1
+            },
+            Phone: {
+                required: true,
+                phoneUS: true
+            },
+            Email: {
+                required: true,
+                email: true
+            },
+            ddlDepts: {
+                required: true
+            }
+        }
+    });
+}
 
 function update() {
 
+    
+    validateEmployee();
+    if ($("#EmployeeModalForm").valid()) {
         emp = new Object();
         emp.Title = $("#TextBoxTitle").val();
         emp.Email = $("#TextBoxEmail").val();
@@ -171,7 +217,7 @@ function update() {
 
         ajaxCall("Put", "api/employees", emp).done(function (data) {
             getAll(data);
-            if(data[0] === "O") {
+            if (data[0] === "O") {
                 $("#modal-body").text(data);
                 $("#modal-success").modal("show");
             }
@@ -179,13 +225,14 @@ function update() {
                 $("#modal-body2").text(data);
                 $("#modal-warning").modal("show");
             }
-     
+
         })
         .fail(function (jqXhr, textStatus, errorThrown) {
             errorRoutine(jqXhr);
         });
         $("#myModal").modal("hide");
 
+    }
     return false;
 }
 
@@ -215,33 +262,7 @@ function _delete() {
 
 function create() {
 
-    $('#EmployeeModalForm').validate({ // initialize the plugin
-        rules: {
-            Title: {
-                required: true,
-                maxlength: 4
-            },
-            Firstname: {
-                required: true,
-                minlength: 1
-            },
-            Lastname: {
-                required: true,
-                minlength: 1
-            },
-            Phone: {
-                required: true
-            },
-            Email: {
-                required: true,
-                email: true
-            },
-            ddlDepts: {
-                required: true
-            }
-        }
-    });
-
+    validateEmployee();
     if ($("#EmployeeModalForm").valid()) {
         emp = new Object();
         emp.Title = $("#TextBoxTitle").val();

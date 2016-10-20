@@ -86,7 +86,8 @@
         </div>
     </div>
     <script src="scripts/jquery-3.1.0.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="scripts/jquery.validate.js"></script>
+    <script src="scripts/additional-methods.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
     <script src="scripts/common.js"></script>
     <script src="scripts/employee.js"></script>
@@ -114,14 +115,14 @@
                                 <form id="EmployeeModalForm">
                                     <div class="form-group row">
                                         <div class="col-xs-3 title" style="font-weight:bold">Title:</div>
-                                        <div class="col-xs-9">
-                                            <input type="text" name="Title" placeholder="Enter Title" id="TextBoxTitle" class="form-control" required />
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Title" placeholder="Enter Title" id="TextBoxTitle" class="form-control" />
                                         </div>
                                     </div>
                                     &nbsp;
                                     <div class="form-group row">
                                         <div class="col-xs-3 title" style="font-weight:bold">Firstname:</div>
-                                        <div class="col-xs-9">
+                                        <div class="col-xs-8">
                                             <input type="text" name="Firstname" placeholder="Enter First Name" id="TextBoxFirstname" class="form-control" required />
                                         </div>
                                     </div>
@@ -169,7 +170,7 @@
 
                     <div class="modal-footer">
                         
-                        <div id="modalstatus" class="col-xs-4 text-left" style="margin-top:1%;"></div>
+                        <div id="modalstatus" class="col-xs-12 text-left" style="margin-top:1%;"></div>
 
                     </div>
 

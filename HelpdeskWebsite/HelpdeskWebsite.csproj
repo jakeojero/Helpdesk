@@ -124,6 +124,7 @@
     <Content Include="img\helpdesk.png" />
     <Content Include="modal-styles.css" />
     <Content Include="problem.html" />
+    <Content Include="scripts\additional-methods.js" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -144,6 +145,7 @@
     <Content Include="scripts\jquery-3.1.0.min.js" />
     <Content Include="scripts\jquery-3.1.0.slim.js" />
     <Content Include="scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\problem.js" />
     <Content Include="scripts\util.js" />
     <Content Include="util.html" />
