@@ -32,6 +32,7 @@
             return deleteEmp;
     });
 
+
     $("#ButtonAction").click(function () {
         if ($("#ButtonAction").val() === "Update") {
             $("#modalstatus").text("Loading...");

@@ -38,20 +38,12 @@
             return deleteEmp;
     });
 
-
-    $("#EmployeeModalForm").on("change paste keyup", function () {
-        $("#ButtonAction").prop("disabled", false);
-        $("#modalstatus").removeClass("alert alert-info");
-        $("#modalstatus").text("");
-    });
-
-    $("#EmployeeModalForm").change();
-
     $("#ButtonAction").click(function () {
+
         if ($("#ButtonAction").val() === "Update") {
             $("#modalstatus").text("Loading...");
 
-            update();
+                update();   
 
             $("#modalstatus").text("");
         }
@@ -71,6 +63,7 @@ $("#main").click(function (e) {
     if (empId === "main" || empId === "") {
         empId = e.target.id; // clicked on row somewhere else
     }
+
 });
 
 
@@ -127,15 +120,12 @@ function getById(id) {
     ajaxCall("Get", "api/employees/" + id, "").done(function (data) {
         if (data.Id != "not found") {
             copyInfoToModal(data);
-            $("#ButtonAction").prop("disabled", true);
-            $("#modalstatus").addClass("alert alert-info");
-            $("#modalstatus").text("Change a field in the form in order to update!");
         }
         else {
-            $("#modalstatus").text("Failed to Load that Employee!");
+            $("#modalstatus").text("Failed to Load that Problem!");
             $("#modalstatus").addClass("alert alert-danger");
         }
-        
+
     });
 }
 
@@ -169,7 +159,9 @@ function loadDepartmentDDL(empdep) {
     .fail(function (jqXHR, textStatus, errorThrown) {
         alert("Error!");
     });
+
 }
+
 function validateEmployee() {
     $('#EmployeeModalForm').validate({ // initialize the plugin
         rules: {

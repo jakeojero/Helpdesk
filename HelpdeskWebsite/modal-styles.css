@@ -13,7 +13,7 @@
     border: rgba(0,0,0,0);
 }
 .modal-message .modal-dialog {
-    width: 300px;
+   
 }
 .modal-message .modal-body, .modal-message .modal-footer, .modal-message .modal-header, .modal-message .modal-title {
     background: 0 0;
