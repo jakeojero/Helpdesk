@@ -3,19 +3,20 @@
 
     $("#main").click(function (e) {
 
-        var depId = e.target.parentNode.id;
-        if (depId === "main" || depId === "") {
-            depId = e.target.id;
+        var probId = e.target.parentNode.id;
+        if (probId === "main" || probId === "") {
+            probId = e.target.id;
         }
 
-        if (depId !== "0") {
+        if (probId !== "0") {
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
-            getById(depId);
+            getById(probId);
         }
         else {
             $("#ButtonDelete").hide();
             $("#ButtonAction").prop("value", "Add");
+            $("#TextBoxProblem").val("");
             localStorage.setItem("Id", "new");
         }
 
@@ -50,9 +51,9 @@
 
 $("#main").click(function (e) {
 
-    var depId = e.target.parentNode.id;
-    if (depId === "main" || depId === "") {
-        depId = e.target.id; // clicked on row somewhere else
+    var probId = e.target.parentNode.id;
+    if (probId === "main" || probId === "") {
+        probId = e.target.id; // clicked on row somewhere else
     }
 });
 
@@ -69,17 +70,17 @@ function buildTable(data) {
     employees = data;
     btn = $("<button class=\"list-group-item\" id=\"0\" " +
             "data-toggle=\"modal\" data-target=\"#myModal\">" +
-            "<span class=\"text-primary\">Add New Problem...</span>"
+            "<span class=\"text-primary glyphicon glyphicon-plus-sign\"></span><span class=\"text-primary\"> Add New Problem...</span>"
         );
     btn.appendTo(div);
 
     $.each(data, function (index, dep) {
-        var depId = dep.Id;
-        btn = $("<button class=\"list-group-item\" id=\"" + depId +
+        var probId = dep.Id;
+        btn = $("<button class=\"list-group-item\" id=\"" + probId +
                 "\" data-toggle=\"modal\" data-target=\"#myModal\">");
 
         btn.html(
-            "<span class=\"col-xs-10\" id=\"problemtitle" + depId + "\">" + dep.Description + "</span>"
+            "<span class=\"col-xs-10\" id=\"problemtitle" + probId + "\">" + dep.Description + "</span>"
         );
         btn.appendTo(div);
     });// each
@@ -97,6 +98,8 @@ function getAll(msg) {
         else
             $("#LabelStatus").text(msg + " - Problems Loaded");
     }).fail(function (jqXHR, textStatus, errorThrown) {
+        $("#modal-body2").text("Retrieve Failed - Contact Tech Support");
+        $("#modal-warning").modal("show");
         errorRoutine(jqXHR);
     });
 }

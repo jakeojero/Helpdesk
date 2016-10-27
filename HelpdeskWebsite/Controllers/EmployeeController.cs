@@ -11,6 +11,10 @@ namespace HelpdeskWebsite.Controllers
     public class EmployeeController : ApiController
     {
 
+        /*
+         *      GetAll()
+         *      Controller Get Request to return a list, and load the list of employess into the Employees Page
+         */
         [Route("api/employees")]
         public IHttpActionResult Get()
         {
@@ -22,10 +26,14 @@ namespace HelpdeskWebsite.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest("Retrieve Failed - " + ex.Message);
+                return BadRequest("Retrieve failed - Contact Tech Support");
             }
         }
 
+        /*
+         *      GetByEmpId()
+         *      Get Request return a given Employee by its id
+         */
         [Route("api/employees/{id}")]
         public IHttpActionResult GetEmpById(string id)
         {
@@ -38,10 +46,18 @@ namespace HelpdeskWebsite.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest("retrieve failed - " + ex.Message);
+                return BadRequest("Retrieve failed - Contact Tech Support");
             }
         }
 
+        /*
+         *      Put()
+         *      Put Request used to update the Employee that was modified
+         *      Returns  1 if successful
+         *              -1 if unsuccessful
+         *              -2 if the data is stale
+         *
+         */
         [Route("api/employees")]
         public IHttpActionResult Put(EmployeeViewModel emp)
         {
@@ -62,10 +78,15 @@ namespace HelpdeskWebsite.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Update Failed - " + ex.Message);
+                return BadRequest("Update Failed - Contact Tech Support");
             }
         }
 
+        /*
+         *      Create()
+         *      Post Request to Create a new Employee based on the Employee passed into it
+         *      If the Id of the created employee is set then it was created successful
+         */
         [Route("api/employees")]
         public IHttpActionResult Create(EmployeeViewModel emp)
         {
@@ -83,11 +104,16 @@ namespace HelpdeskWebsite.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest("Create Failed - " + ex.Message);
+                return BadRequest("Create Failed - Contact Tech Support");
 
             }
         }
 
+        /*
+         *      Delete()
+         *      Delete Request deletes the specific Employee based on its id
+         *      Returns 1 for success 0 for failure
+         */
         [HttpDelete]
         [Route("api/employees/{id}")]
         public IHttpActionResult Delete(string id)
@@ -103,14 +129,14 @@ namespace HelpdeskWebsite.Controllers
                     case 1:
                         return Ok("Ok! Employee " + emp.Lastname + " has been Deleted!");
                     case 0:
-                        return Ok("Error! Employee " + emp.Lastname + " employee does not Exist!");
+                        return Ok("Error! Employee does not Exist!");
                     default:
                         return Ok("Employee " + emp.Lastname + " not deleted!");
                 }
             }
             catch(Exception ex)
             {
-                return BadRequest("Delete Failed - " + ex.Message);
+                return BadRequest("Delete Failed - Contact Tech Support");
             }
 
         }

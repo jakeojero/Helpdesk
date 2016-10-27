@@ -24,6 +24,10 @@ namespace HelpdeskViewModels
             _dao = new ProblemDAO();
         }
 
+        /*
+        *  GetByProblemDescription()
+        *  Gets the specific problem based on the "Description" of the Problem
+        */
         public void GetByProblemDescription()
         {
             try
@@ -40,6 +44,11 @@ namespace HelpdeskViewModels
 
         }
 
+        /*
+         *  GetById()
+         *  ViewModel Layer of GetById, calls the ProblemDAO's GetByProblemId method
+         *  Uses the passed Id and calls the related method in the DAO based on the id
+         */
         public void GetById()
         {
             try
@@ -55,6 +64,11 @@ namespace HelpdeskViewModels
             }
         }
 
+        /*
+         *  Update()
+         *  ViewModel Layer of Update, calls the ProblemDAO's Update method
+         *  Takes the information needed from the web layer, and updates based on them
+         */
         public int Update()
         {
             UpdateStatus opStatus;
@@ -77,6 +91,11 @@ namespace HelpdeskViewModels
             return Convert.ToInt16(opStatus);
         }
 
+        /*
+         *  Create()
+         *  ViewModel Layer of Create, calls the ProblemDAO's Create method
+         *  Takes the information needed from the web layer to create and item and then the Id is then set.
+         */
         public void Create()
         {
             try
@@ -93,6 +112,11 @@ namespace HelpdeskViewModels
             }
         }
 
+        /*
+         *  GetAll()
+         *  ViewModel Layer of GetAll, calls the ProblemDAO's GetAll method
+         *  Creates a list of ProblemViewModels for the web layer to access through jQuery
+         */
         public List<ProblemViewModel> GetAll()
         {
             List<ProblemViewModel> problemsViewModelList = new List<ProblemViewModel>();
@@ -119,6 +143,10 @@ namespace HelpdeskViewModels
             return problemsViewModelList;
         }
 
+        /*
+         *  Delete()
+         *  ViewModel Layer of delete, calls the ProblemDAO's delete method based on the id passed from the controller
+         */
         public long Delete()
         {
             long delStatus = 0;

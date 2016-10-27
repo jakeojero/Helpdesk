@@ -21,7 +21,7 @@ namespace HelpdeskWebsite.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest("retrieve failed - " + ex.Message);
+                return BadRequest("Retrieve failed - Contact Tech Support");
             }
         }
 
@@ -37,7 +37,7 @@ namespace HelpdeskWebsite.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("retrieve failed - " + ex.Message);
+                return BadRequest("Retrieve failed - Contact Tech Support");
             }
         }
 
@@ -61,7 +61,7 @@ namespace HelpdeskWebsite.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Update Failed - " + ex.Message);
+                return BadRequest("Update Failed - Contact Tech Support");
             }
         }
 
@@ -82,7 +82,7 @@ namespace HelpdeskWebsite.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Create Failed - " + ex.Message);
+                return BadRequest("Create Failed - Contact Tech Support");
 
             }
         }
@@ -102,14 +102,14 @@ namespace HelpdeskWebsite.Controllers
                     case 1:
                         return Ok("Ok! Department " + dep.Name + " has been Deleted!");
                     case 0:
-                        return Ok("Error! Department " + dep.Name + " does not Exist!");
+                        return Ok("Error! Department does not Exist!");
                     default:
                         return Ok("Department " + dep.Name + " not deleted!");
                 }
             }
             catch (Exception ex)
             {
-                return BadRequest("Delete Failed - " + ex.Message);
+                return BadRequest("Delete Failed - Contact Tech Support");
             }
 
         }

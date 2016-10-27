@@ -28,7 +28,7 @@ namespace HelpdeskWebsite.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest("Collections creation failed - " + ex.Message);
+                return BadRequest("Collections creation failed - Contact Tech Support");
             }
         }
 

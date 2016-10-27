@@ -29,6 +29,10 @@ namespace HelpdeskViewModels
             _dao = new EmployeeDAO();
         }
 
+        /*
+        *  GetByLastnam()
+        *  Gets the specific employee based on the "Lastname" of the Employee
+        */
         public void GetByLastname()
         {
             try
@@ -49,6 +53,11 @@ namespace HelpdeskViewModels
             }
         }
 
+        /*
+        *  GetById()
+        *  ViewModel Layer of GetById, calls the EmployeeDAO's GetById method
+        *  Uses the passed Id and calls the related method in the DAO based on the id
+        */
         public void GetById()
         {
             try
@@ -70,6 +79,11 @@ namespace HelpdeskViewModels
             }
         }
 
+        /*
+         *  Update()
+         *  ViewModel Layer of Update, calls the EmployeeDAO's Update method
+         *  Takes the information needed from the web layer, and updates based on them
+         */
         public int Update()
         {
             UpdateStatus opStatus;
@@ -96,11 +110,12 @@ namespace HelpdeskViewModels
             return Convert.ToInt16(opStatus);
         }
 
-        public void GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
 
+        /*
+         *  Create()
+         *  ViewModel Layer of Create, calls the EmployeeDAO's Create method
+         *  Takes the information needed from the web layer to create and item and then the Id is then set.
+         */
         public void Create()
         {
             try
@@ -122,6 +137,11 @@ namespace HelpdeskViewModels
             }
         }
 
+        /*
+         *  GetAll()
+         *  ViewModel Layer of GetAll, calls the EmployeeDAO's GetAll method
+         *  Creates a list of EmployeeViewModels for the web layer to access through jQuery
+         */
         public List<EmployeeViewModel> GetAll()
         {
             List<EmployeeViewModel> empsViewModelList = new List<EmployeeViewModel>();
@@ -151,6 +171,10 @@ namespace HelpdeskViewModels
             return empsViewModelList;
         }
 
+        /*
+         *  Delete()
+         *  ViewModel Layer of delete, calls the EmployeeDAO's delete method based on the id passed from the controller
+         */
         public long Delete()
         {
             long delStatus = 0;

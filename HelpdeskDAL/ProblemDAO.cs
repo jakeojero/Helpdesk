@@ -17,6 +17,10 @@ namespace HelpdeskDAL
             repo = new HelpdeskRepository();
         }
 
+        /*
+        *  GetByProblemDescription()
+        *  Uses the Repository and Gets the specific employee based on the "Description" of the Problem
+        */
         public Problem GetByProblemDescription(string description)
         {
             Problem prob = null;
@@ -35,6 +39,11 @@ namespace HelpdeskDAL
             return prob;
         }
 
+        /*
+        *  GetByProblemId()
+        *  Uses the Repository and Gets the specific Problem based on the "id" of the Problem
+        *  Returns a Problem Object
+        */
         public Problem GetByProblemId(string id)
         {
             Problem prob = null;
@@ -54,6 +63,10 @@ namespace HelpdeskDAL
 
         }
 
+        /*
+        *  GetAll()
+        *  Uses the Repository and Returns a List of all Problems
+        */
         public List<Problem> GetAll()
         {
             List<Problem> probs = null;
@@ -70,6 +83,11 @@ namespace HelpdeskDAL
             return probs;
         }
 
+        /*
+        *  Update()
+        *  Uses the Repository and creates an update definition to be used in the repo's update method
+        *  Returns an UpdateStatus enum Number based on the result
+        */
         public UpdateStatus Update(Problem prob)
         {
             UpdateStatus status = UpdateStatus.Failed;
@@ -94,6 +112,11 @@ namespace HelpdeskDAL
             return status;
         }
 
+        /*
+         *  Create()
+         *  Uses the Repository and creates the problem based on the object that was passed in as an argument
+         *  Returns the created Problem in a problem Object
+         */
         public Problem Create(Problem prob)
         {
             repo = new HelpdeskRepository(new DbContext());
@@ -111,6 +134,11 @@ namespace HelpdeskDAL
             return probRet;
         }
 
+        /*
+        *  Delete()
+        *  Uses the Repository and deletes the Problem id that is passed to this function
+        *  Returns a delete status number based on if the delete was successful or not
+        */
         public long Delete(string id)
         {
             repo = new HelpdeskRepository(new DbContext());

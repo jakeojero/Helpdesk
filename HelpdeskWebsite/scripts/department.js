@@ -16,6 +16,7 @@
         else {
             $("#ButtonDelete").hide();
             $("#ButtonAction").prop("value", "Add");
+            $("#TextBoxDepartment").val("");
             localStorage.setItem("Id", "new");
         }
 
@@ -70,7 +71,7 @@ function buildTable(data) {
     employees = data;
     btn = $("<button class=\"list-group-item\" id=\"0\" " +
             "data-toggle=\"modal\" data-target=\"#myModal\">" +
-            "<span class=\"text-primary\">Add New Department...</span>"
+            "<span class=\"text-primary glyphicon glyphicon-plus-sign\"></span><span class=\"text-primary\"> Add New Department...</span>"
         );
     btn.appendTo(div);
 
@@ -98,6 +99,8 @@ function getAll(msg) {
         else
             $("#LabelStatus").text(msg + " - Departments Loaded");
     }).fail(function (jqXHR, textStatus, errorThrown) {
+        $("#modal-body2").text("Retrieve Failed - Contact Tech Support");
+        $("#modal-warning").modal("show");
         errorRoutine(jqXHR);
     });
 }

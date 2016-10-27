@@ -17,6 +17,10 @@ namespace HelpdeskDAL
             repo = new HelpdeskRepository();
         }
 
+        /*
+        *  GetByLastname()
+        *  Uses the Repository and Gets the specific employee based on the "Lastname" of the Employee
+        */
         public Employee GetByLastname(string name)
         {
             Employee emp = null;
@@ -35,6 +39,11 @@ namespace HelpdeskDAL
             return emp;
         }
 
+        /*
+        *  GetById()
+        *  Uses the Repository and Gets the specific employee based on the "id" of the Employee
+        *  Returns an Employee Object
+        */
         public Employee GetById(string id)
         {
             Employee emp = null;
@@ -52,6 +61,10 @@ namespace HelpdeskDAL
             return emp;
         }
 
+        /*
+        *  GetAll()
+        *  Uses the Repository and Returns a List of all Employees
+        */
         public List<Employee> GetAll()
         {
             List<Employee> emps = null;
@@ -68,6 +81,11 @@ namespace HelpdeskDAL
             return emps;
         }
 
+        /*
+       *  Update()
+       *  Uses the Repository and creates an update definition to be used in the repo's update method
+       *  Returns an UpdateStatus enum Number based on the result
+       */
         public UpdateStatus Update(Employee emp)
         {
             UpdateStatus status = UpdateStatus.Failed;
@@ -96,6 +114,11 @@ namespace HelpdeskDAL
             return status;
         }
 
+     /*
+      *  Delete()
+      *  Uses the Repository and deletes the Employee id that is passed to this function
+      *  Returns a delete status number based on if the delete was successful or not
+      */
         public long Delete(string id)
         {
             repo = new HelpdeskRepository(new DbContext());
@@ -113,6 +136,11 @@ namespace HelpdeskDAL
             return delete_status;
         }
 
+        /*
+         *  Create()
+         *  Uses the Repository and creates the Employee based on the object that was passed in as an argument
+         *  Returns the created Employee that was created
+         */
         public Employee Create(Employee emp)
         {
             repo = new HelpdeskRepository(new DbContext());
