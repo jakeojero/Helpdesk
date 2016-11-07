@@ -79,3 +79,16 @@
     color: #f4b400;
     border-bottom: 3px solid #ffce55;
 }
+
+div.error {
+    font-weight:bold;
+    text-transform:uppercase;
+    background:#ffecec url('img/error.png') no-repeat 10px 50%;
+    border:1px solid #f5aca6;
+    color:#555;
+    border-radius:10px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+    padding:10px 10px 10px 36px;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}

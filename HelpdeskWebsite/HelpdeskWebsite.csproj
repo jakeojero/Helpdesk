@@ -120,6 +120,7 @@
     <Content Include="Global.asax" />
     <Content Include="home.html" />
     <Content Include="Content\favicon.ico" />
+    <Content Include="img\error.png" />
     <Content Include="img\favicon.png" />
     <Content Include="img\helpdesk.png" />
     <Content Include="modal-styles.css" />

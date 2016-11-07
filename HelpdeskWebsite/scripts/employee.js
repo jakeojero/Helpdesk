@@ -12,6 +12,7 @@
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
             getById(empId);
+            $("#EmployeeModalForm").data('validator').resetForm();
         }
         else {
             $("#ButtonDelete").hide();
@@ -169,34 +170,60 @@ function validateEmployee() {
         rules: {
             Title: {
                 required: true,
-                maxlength: 4
+                maxlength: 4,
+                validTitle: true
             },
             Firstname: {
                 required: true,
-                minlength: 1
+                maxlength: 25
             },
             Lastname: {
                 required: true,
-                minlength: 1
+                maxlength: 25
             },
             Phone: {
                 required: true,
-                phoneUS: true
+                phoneUS: true,
+                maxlength: 15
             },
             Email: {
                 required: true,
-                email: true
+                email: true,
+                maxlength: 40
             },
             ddlDepts: {
                 required: true
             }
+        },
+        ignore: ".ignore, :hidden",
+        errorElement: "div",
+        wrapper: "div",
+        messages: {
+            Title: {
+                required: "Required 1-4 Characters.", maxlength: "Required 1-4 Characters", validTitle: "Mr. Ms. Mrs. or Dr."
+            },
+            Firstname: {
+                required: "Required 1-25 Characters.", maxlength: "Required 1-25 Characters"
+            },
+            Lastname: {
+                required: "Required 1-25 Characters.", maxlength: "Required 1-25 Characters"
+            },
+            Phone: {
+                required: "Required 1-15 Characters.", maxlength: "Required 1-15 Characters"
+            },
+            Email: {
+                required: "Required 1-40 Characters.", maxlength: "Required 1-40 Characters", email: "Must be a valid email format."
+            }
         }
     });
+
+    $.validator.addMethod("validTitle", function (value, element) {
+        return this.optional(element) || (value === "Mr." || value === "Ms." || value === "Mrs." || value === "Dr.");
+    }, "");
 }
 
 function update() {
 
-    
     validateEmployee();
     if ($("#EmployeeModalForm").valid()) {
         emp = new Object();
@@ -212,12 +239,12 @@ function update() {
         ajaxCall("Put", "api/employees", emp).done(function (data) {
             getAll(data);
             if (data[0] === "O") {
-                $("#modal-body").text(data);
-                $("#modal-success").modal("show");
+                $("#heading").css("background-color", "#47A44B");
+                $("#heading").css("color", "#fff");
             }
             else if (data[0] === "D") {
-                $("#modal-body2").text(data);
-                $("#modal-warning").modal("show");
+                $("#heading").css("background-color", "#F0AD4E");
+                $("#heading").css("color", "#fff");
             }
 
         })
@@ -237,12 +264,12 @@ function _delete() {
     ajaxCall("Delete", "api/employees/" + emp.Id).done(function (data) {
         getAll(data);
         if (data[0] === "O") {
-            $("#modal-body").text(data);
-            $("#modal-success").modal("show");
+            $("#heading").css("background-color", "#47A44B");
+            $("#heading").css("color", "#fff");
         }
         else if (data[0] === "E") {
-            $("#modal-body2").text(data);
-            $("#modal-warning").modal("show");
+            $("#heading").css("background-color", "#F0AD4E");
+            $("#heading").css("color", "#fff");
         }
 
     })
@@ -270,13 +297,13 @@ function create() {
         ajaxCall("Post", "api/employees", emp).done(function (data) {
             getAll(data);
             if (data[0] === "O") {
-                $("#modal-body").text(data);
-                $("#modal-success").modal("show");
+                $("#heading").css("background-color", "#47A44B");
+                $("#heading").css("color", "#fff");
                 $("#myModal").modal("hide");
             }
             else if (data[0] === "E") {
-                $("#modal-body2").text(data);
-                $("#modal-warning").modal("show");
+                $("#heading").css("background-color", "#F0AD4E");
+                $("#heading").css("color", "#fff");
                 $("#myModal").modal("hide");
             }
         })

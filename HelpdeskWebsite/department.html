@@ -45,9 +45,9 @@
             border-right: 5px solid #333333;
         }
 
-        @media (max-width: 979px) {
+        @media (max-width: 1300px) {
             body {
-                padding-top: 30px;
+                padding-top: 60px;
             }
             .title {
                 font-size: 0.75em;
@@ -98,7 +98,7 @@
         </div>
         &nbsp;
         <div class="panel panel-info">
-            <div class="panel panel-heading">
+            <div class="panel panel-heading" id="heading">
                 <span class="msg" id="LabelStatus"></span>
             </div>
 
@@ -120,7 +120,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="CloseModal" data-dismiss="modal">&times;</button>
                     <h1 id="mainTitle">Edit Department <i class="glyphicon glyphicon-pencil"></i></h1>
                 </div>
 
@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="panel-body">
-                            <form id="DepartmentModalForm">
+                            <form id="DepartmentModalForm" name="DepartmentModalForm" method="post" action="">
                                 <div class="form-group row">
                                     <div class="col-xs-3 title" style="font-weight:bold">Department:</div>
                                     <div class="col-xs-9">
@@ -164,36 +164,6 @@
         </div>
     </div>
 
-    <div id="modal-success" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="glyphicon glyphicon-check"></i>
-                </div>
-                <div class="modal-title">Success</div>
-                <div id="modal-body" class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                </div>
-            </div> <!-- / .modal-content -->
-        </div> <!-- / .modal-dialog -->
-    </div>
-
-    <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="glyphicon glyphicon-remove"></i>
-                </div>
-                <div class="modal-title">Warning</div>
-
-                <div id="modal-body2" class="modal-body">Is something wrong?</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
-                </div>
-            </div> <!-- / .modal-content -->
-        </div> <!-- / .modal-dialog -->
-    </div>
 
 </body>
 </html>

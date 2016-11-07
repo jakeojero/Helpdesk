@@ -12,6 +12,7 @@
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
             getById(depId);
+            $("#DepartmentModalForm").data('validator').resetForm();
         }
         else {
             $("#ButtonDelete").hide();
@@ -132,6 +133,14 @@ function validateDepartment() {
                 required: true
             }
 
+        },
+        ignore: ".ignore, :hidden",
+        errorElement: "div",
+        wrapper: "div",
+        messages: {
+            Department: {
+                required: "This field is required."
+            }
         }
     });
 }
@@ -147,12 +156,12 @@ function update() {
         ajaxCall("Put", "api/departments", dep).done(function (data) {
             getAll(data);
             if (data[0] === "O") {
-                $("#modal-body").text(data);
-                $("#modal-success").modal("show");
+                $("#heading").css("background-color", "#47A44B");
+                $("#heading").css("color", "#fff");
             }
             else if (data[0] === "D") {
-                $("#modal-body2").text(data);
-                $("#modal-warning").modal("show");
+                $("#heading").css("background-color", "#F0AD4E");
+                $("#heading").css("color", "#fff");
             }
 
         })
@@ -172,12 +181,12 @@ function _delete() {
     ajaxCall("Delete", "api/departments/" + dep.Id).done(function (data) {
         getAll(data);
         if (data[0] === "O") {
-            $("#modal-body").text(data);
-            $("#modal-success").modal("show");
+            $("#heading").css("background-color", "#47A44B");
+            $("#heading").css("color", "#fff");
         }
         else if (data[0] === "E") {
-            $("#modal-body2").text(data);
-            $("#modal-warning").modal("show");
+            $("#heading").css("background-color", "#F0AD4E");
+            $("#heading").css("color", "#fff");
         }
 
     })
@@ -201,13 +210,13 @@ function create() {
         ajaxCall("Post", "api/departments", dep).done(function (data) {
             getAll(data);
             if (data[0] === "O") {
-                $("#modal-body").text(data);
-                $("#modal-success").modal("show");
+                $("#heading").css("background-color", "#47A44B");
+                $("#heading").css("color", "#fff");
                 $("#myModal").modal("hide");
             }
             else if (data[0] === "E") {
-                $("#modal-body2").text(data);
-                $("#modal-warning").modal("show");
+                $("#heading").css("background-color", "#F0AD4E");
+                $("#heading").css("color", "#fff");
                 $("#myModal").modal("hide");
             }
         })
