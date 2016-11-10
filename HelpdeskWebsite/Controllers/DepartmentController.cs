@@ -41,6 +41,22 @@ namespace HelpdeskWebsite.Controllers
             }
         }
 
+        [Route("api/departmentname/{name}")]
+        public IHttpActionResult GetDepByName(string name)
+        {
+            try
+            {
+                DepartmentViewModel dep = new DepartmentViewModel();
+                dep.Name = name;
+                dep.GetByDepartmentName();
+                return Ok(dep);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Retrieve failed - Contact Tech Support");
+            }
+        }
+
         [Route("api/departments")]
         public IHttpActionResult Put(DepartmentViewModel dep)
         {

@@ -50,6 +50,22 @@ namespace HelpdeskWebsite.Controllers
             }
         }
 
+        [Route("api/employeename/{name}")]
+        public IHttpActionResult GetByName(string name)
+        {
+            try
+            {
+                EmployeeViewModel emp = new EmployeeViewModel();
+                emp.Lastname = name;
+                emp.GetByLastname();
+                return Ok(emp);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Retrieve Failed - Contact Tech Support");
+            }
+        }
+
         /*
          *      Put()
          *      Put Request used to update the Employee that was modified

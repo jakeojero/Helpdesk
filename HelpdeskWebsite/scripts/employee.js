@@ -12,7 +12,7 @@
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
             getById(empId);
-            $("#EmployeeModalForm").data('validator').resetForm();
+            //$("#EmployeeModalForm").data('validator').resetForm();
         }
         else {
             $("#ButtonDelete").hide();
