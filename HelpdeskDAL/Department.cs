@@ -11,5 +11,16 @@ namespace HelpdeskDAL
     public class Department : HelpdeskEntity
     {
         public string DepartmentName { get; set; }
+
+        public ObjectId ManagerId { get; set; }
+
+        public string GetManagerIdAsString()
+        {
+            return this.ManagerId.ToString();
+        }
+        public void SetDepartmentIdFromString(string id)
+        {
+            this.ManagerId = new ObjectId(id);
+        }
     }
 }

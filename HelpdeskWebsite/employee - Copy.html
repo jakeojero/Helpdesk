@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Editor</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="Content/favicon.ico" type="image/x-icon" />
+    <link href="modal-styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+        #navbar ul li #emp:hover {
+            color: #fff;
+            background-color: #3E2784;
+        }
+
+         #navbar ul li #dep:hover {
+            color: #fff;
+            background-color: #7F132D;
+        }
+        #navbar ul li #prob:hover {
+            color: #fff;
+            background-color: #B8431F;
+        }
+        #navbar ul li #util:hover {
+            color: #fff;
+            background-color: #2672EC;
+        }
+
+        body {
+            padding-top: 70px;
+            font-family: 'Lato', sans-serif;
+            font-size: 2em;
+           
+        }
+
+        button.list-group-item { 
+            border-radius:5px;
+            color: #555;
+        }
+        button.list-group-item:hover {
+            background-color: #D9EDF7;
+            border-left: 5px solid #333333;
+            border-right: 5px solid #333333;
+        }
+
+   
+
+        @media (max-width: 1300px) {
+            body {
+                padding-top: 60px;
+            }
+
+            #main {
+                font-size: 0.6em;
+             
+            }
+
+            .title {
+                font-size: 0.8em;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href="/home.html" title="">
+                    <img style="width: 25px;max-width:100px; margin-top: 0px;"
+                         src="img/favicon.png">
+                </a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home.html">Home</a></li>
+                    <li class="active"><a href="/employee.html" id="emp">Employees</a></li>
+                    <li><a href="/department.html" id="dep">Departments</a></li>
+                    <li><a href="/problem.html" id="prob">Problems</a></li>
+                    <li><a href="/util.html" id="util">Utilities</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-2">&nbsp;</div>
+
+
+
+    <div class="col-sm-8 col-xs-12 main-panel">
+
+        <div class="text-center row app-head" style="font-size:30px;font-weight:bold;">
+           Employees <i class="glyphicon glyphicon-user"></i>
+        </div>
+        &nbsp;
+        <div class="panel panel-info">
+            <div class="panel panel-heading" id="heading">
+                <span class="msg" id="LabelStatus"></span>
+            </div>
+
+            <div class="panel-body">
+                <div id="main"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/jquery.validate.js"></script>
+    <script src="scripts/additional-methods.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/employee.js"></script>
+
+
+    <div class="modal fade" data-backdrop="static" id="myModal">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" id="CloseModal" class="close" data-dismiss="modal">&times;</button>
+                        <h1 id="mainTitle">Edit Employee <i class="glyphicon glyphicon-pencil"></i></h1>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading text-center">
+                                Employee Information
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form id="EmployeeModalForm" name="EmployeeModalForm" method="post" action="">
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Title:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Title" placeholder="Enter Title" id="TextBoxTitle" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Firstname:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Firstname" placeholder="Enter First Name" id="TextBoxFirstname" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Lastname:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Lastname" placeholder="Enter Last Name" id="TextBoxLastname" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Phone #:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Phone" placeholder="Enter Phone #" id="TextBoxPhone" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Email:</div>
+                                        <div class="col-xs-8">
+                                            <input type="text" name="Email" placeholder="Enter E-Mail" id="TextBoxEmail" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Is Tech?:</div>
+                                        <input type="checkbox" name="IsTech" id="CheckBoxTech" />
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Dept:</div>
+                                        <div class="col-xs-8">
+                                            <select id="ddlDepts" name="ddlDepts" class="form-control"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-xs-3 title" style="font-weight:bold">Staff Pic:</div>
+                                        <div class="col-xs-8">
+                                            <div id="ImageHolder">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input class="btn btn-default btn-file" id="fileUpload" name="file" type="file" />
+                            </div>
+
+                            <div class="col-xs-8">
+                                <input type="submit" class="btn btn-lg btn-success" value="Update" id="ButtonAction" />
+                                <input type="submit" class="btn btn-lg btn-danger" value="Delete" id="ButtonDelete" />
+                            </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div id="modalstatus" class="col-xs-12 text-center text-capitalize" style="margin: 1% 0 1% 1%; width:98%;"></div>
+                    </div>
+                </div><!-- End Footer -->
+            </div><!-- End Modal Content -->
+        </div><!-- End Modal Dialog -->
+    </div><!-- End Modal-->
+
+
+</body>
+</html>

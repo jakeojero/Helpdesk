@@ -14,7 +14,7 @@ namespace HelpdeskDAL
         public DbContext()
         {
             MongoClient client = new MongoClient(); // Connect to local host
-            Db = client.GetDatabase("HelpdeskDB");
+            Db = client.GetDatabase("HelpdeskDB2");
         }
 
         public IMongoCollection<HelpdeskEntity> GetCollection<HelpdeskEntity>()

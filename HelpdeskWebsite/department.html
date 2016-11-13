@@ -9,51 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <style>
-
-        #navbar ul li #emp:hover {
-            color: #fff;
-            background-color: #3E2784;
-        }
-
-         #navbar ul li #dep:hover {
-            color: #fff;
-            background-color: #7F132D;
-        }
-        #navbar ul li #prob:hover {
-            color: #fff;
-            background-color: #B8431F;
-        }
-        #navbar ul li #util:hover {
-            color: #fff;
-            background-color: #2672EC;
-        }
-
-        body {
-            padding-top: 70px;
-            font-family: 'Lato', sans-serif;
-            font-size: 2em;
-        }
-
-        button.list-group-item { 
-            border-radius:5px;
-            color: #555;
-        }
-        button.list-group-item:hover {
-            background-color: #D9EDF7;
-            border-left: 5px solid #333333;
-            border-right: 5px solid #333333;
-        }
-
-        @media (max-width: 1300px) {
-            body {
-                padding-top: 60px;
-            }
-            .title {
-                font-size: 0.75em;
-            }
-        }
-    </style>
+ 
 </head>
 <body>
 
@@ -114,55 +70,32 @@
     <script src="scripts/department.js"></script>
 
 
+
     <div class="modal fade" data-backdrop="static" id="myModal">
 
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" id="CloseModal" data-dismiss="modal">&times;</button>
-                    <h1 id="mainTitle">Edit Department <i class="glyphicon glyphicon-pencil"></i></h1>
-                </div>
-
-                <div class="modal-body">
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading text-center">
-                            Department Information
-                        </div>
-
-                        <div class="panel-body">
-                            <form id="DepartmentModalForm" name="DepartmentModalForm" method="post" action="">
-                                <div class="form-group row">
-                                    <div class="col-xs-3 title" style="font-weight:bold">Department:</div>
-                                    <div class="col-xs-9">
-                                        <input type="text" name="Department" placeholder="Enter Department Name" id="TextBoxDepartment" class="form-control" />
-                                    </div>
-                                </div>
-                                &nbsp;
-                                &nbsp;
-                                <div class="form-group row">
-                                    <div class="col-xs-12">
-                                        <input type="submit" class="btn btn-lg btn-success" value="Update" id="ButtonAction" />
-                                        <input type="submit" class="btn btn-lg btn-danger pull-right" value="Delete" id="ButtonDelete" />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-
-                    <div id="modalstatus" class="col-xs-12 text-left" style="margin-top:1%;"></div>
-
-                </div>
-
-
+        <div class="card card-container">
+            <h3 id="mainTitle" align="center" style="font-family: 'Lato';">Edit Department <i class="glyphicon glyphicon-pencil"></i></h3>
+            <div class="row text-center">
+                <input type="submit" class="btn btn-lg btn-success" value="Update" id="ButtonAction" />
+                <input type="submit" class="btn btn-lg btn-danger" value="Delete" id="ButtonDelete" />
+                <button type="button" id="CloseModal" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
             </div>
-        </div>
-    </div>
+            <div class="row">
+                <div id="modalstatus" class="col-xs-12 text-center text-capitalize" style="margin: 1% 0 1% 1%; width:98%;"></div>
+            </div>
+            <hr />
+
+            <!-- Department Information Form -->
+            <form class="form-signin" id="DepartmentModalForm" name="DepartmentModalForm" method="post" action="">
+
+                <div class="form-group">
+                    <div class="title">Department Name</div>
+                    <input type="text" name="Department" placeholder="Enter Department Name" id="TextBoxDepartment" class="form-control" />
+                </div>
+            </form><!-- /form -->
+            <hr />
+        </div><!-- /card-container -->
+    </div><!-- End Modal-->
 
 
 </body>

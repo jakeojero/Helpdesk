@@ -93,18 +93,27 @@ namespace HelpdeskDAL
 
             try
             {
-                var builder = Builders<Employee>.Filter;
-                var filter = builder.Eq("Id", emp.Id) & builder.Eq("Version", emp.Version);
-                var update = Builders<Employee>.Update
-                    .Set("DepartmentId", emp.DepartmentId)
-                    .Set("Email", emp.Email)
-                    .Set("Firstname", emp.Firstname)
-                    .Set("Lastname", emp.Lastname)
-                    .Set("Phoneno", emp.Phoneno)
-                    .Set("Title", emp.Title)
-                    .Inc("Version", 1);
+                if (Exists(emp.Id))
+                {
+                    var builder = Builders<Employee>.Filter;
+                    var filter = builder.Eq("Id", emp.Id) & builder.Eq("Version", emp.Version);
+                    var update = Builders<Employee>.Update
+                        .Set("DepartmentId", emp.DepartmentId)
+                        .Set("Email", emp.Email)
+                        .Set("Firstname", emp.Firstname)
+                        .Set("Lastname", emp.Lastname)
+                        .Set("Phoneno", emp.Phoneno)
+                        .Set("Title", emp.Title)
+                        .Set("StaffPicture64", emp.StaffPicture64)
+                        .Set("IsTech", emp.IsTech)
+                        .Inc("Version", 1);
 
-                status = repo.Update(emp.Id.ToString(), filter, update);
+                    status = repo.Update(emp.Id.ToString(), filter, update);
+                }
+                else
+                {
+                    status = UpdateStatus.Failed;
+                }
             }
             catch (Exception ex)
             {
@@ -159,11 +168,9 @@ namespace HelpdeskDAL
 
         private bool Exists(ObjectId id)
         {
-            DbContext ctx = new DbContext();
-            var collection = ctx.GetCollection<Employee>();
             var filter = Builders<Employee>.Filter.Eq("Id", id);
-            var emps = collection.Find(filter);
-            return (emps.Count() > 0);
+            Employee emp = repo.GetOne(filter);
+            return (emp.GetIdAsString().Length == 24);
         }
     }
 }

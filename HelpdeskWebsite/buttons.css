@@ -1,9 +1,4 @@
-﻿body {
-  font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.5em;
-  font-weight: 400;
-}
+﻿
 
 p, span, a, ul, li, button {
   font-family: inherit;
@@ -33,6 +28,7 @@ strong {
   background: #fff;
   padding: 20px;
   margin-bottom: 30px;
+
 }
 .tile .title {
   margin-top: 0px;

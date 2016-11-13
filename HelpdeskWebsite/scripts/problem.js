@@ -12,7 +12,9 @@
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
             getById(probId);
-            $("#ProblemModalForm").data('validator').resetForm();
+            $("#CloseModal").click(function () {
+                $("#ProblemModalForm").validate().resetForm();
+            });
 
         }
         else {

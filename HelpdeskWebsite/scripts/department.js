@@ -12,7 +12,9 @@
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
             getById(depId);
-            $("#DepartmentModalForm").data('validator').resetForm();
+            $("#CloseModal").click(function () {
+                $("#DepartmentModalForm").validate().resetForm();
+            });
         }
         else {
             $("#ButtonDelete").hide();

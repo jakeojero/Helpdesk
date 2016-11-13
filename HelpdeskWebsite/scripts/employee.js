@@ -11,10 +11,17 @@
         if (empId !== "0") {
             $("#ButtonAction").prop("value", "Update");
             $("#ButtonDelete").show();
+            $("#modalstatus").text("");
+            $("#modalstatus").removeClass("alert alert-danger");
             getById(empId);
-            //$("#EmployeeModalForm").data('validator').resetForm();
+            $("#CloseModal").click(function () {
+                $("#EmployeeModalForm").validate().resetForm();
+            });
         }
         else {
+            $("#StaffPicture").attr('src', '');
+            $("#empname").text("");
+            $("#CheckBoxTech").checked = false;
             $("#ButtonDelete").hide();
             $("#ButtonAction").prop("value", "Add");
             localStorage.setItem("Id", "new");
@@ -42,11 +49,7 @@
     $("#ButtonAction").click(function () {
 
         if ($("#ButtonAction").val() === "Update") {
-            $("#modalstatus").text("Loading...");
-
                 update();   
-
-            $("#modalstatus").text("");
         }
         else {
             create();
@@ -123,6 +126,8 @@ function getById(id) {
     ajaxCall("Get", "api/employees/" + id, "").done(function (data) {
         if (data.Id != "not found") {
             copyInfoToModal(data);
+            localStorage.setItem("staffpic", data.StaffPicture64);
+            $('#ImageHolder').html('<img class="profile-img-card" id="StaffPicture" height="120" width="110" src="data:image/png;base64,' + data.StaffPicture64 + '" />');
         }
         else {
             $("#modalstatus").text("Failed to Load that Problem!");
@@ -138,6 +143,12 @@ function copyInfoToModal(emp) {
     $("#TextBoxLastname").val(emp.Lastname);
     $("#TextBoxPhone").val(emp.Phoneno);
     $("#TextBoxEmail").val(emp.Email);
+    $("#empname").text(emp.Firstname + ' ' + emp.Lastname);
+    if (emp.IsTech)
+        document.getElementById("CheckBoxTech").checked = true;
+    else
+        document.getElementById("CheckBoxTech").checked = false;
+
     localStorage.setItem("Id", emp.Id);
     localStorage.setItem("Version", emp.Version);
     loadDepartmentDDL(emp.DepartmentId);
@@ -222,16 +233,60 @@ function validateEmployee() {
     }, "");
 }
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#ImageHolder').html('<img class="profile-img-card" id="StaffPicture" height="120" width="110" src="' + e.target.result + '" />');
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 function update() {
 
     validateEmployee();
+    emp = new Object();
+
+    var reader = new FileReader();
+    var file = $('#fileUpload')[0].files[0];
+    if (file) {
+        reader.readAsBinaryString(file);
+        $("#modalstatus").text("");
+
+        reader.onload = function (readerEvt) {
+
+            var binaryString = reader.result;
+            var encodedString = btoa(binaryString);
+            emp.StaffPicture64 = encodedString;
+            performUpdate();
+        }
+    }
+    else {
+        emp.StaffPicture64 = localStorage.getItem("staffpic");
+        performUpdate();
+    }
+    
+
+}
+
+function performUpdate() {
+
     if ($("#EmployeeModalForm").valid()) {
-        emp = new Object();
+
+
         emp.Title = $("#TextBoxTitle").val();
         emp.Email = $("#TextBoxEmail").val();
         emp.Firstname = $("#TextBoxFirstname").val();
         emp.Lastname = $("#TextBoxLastname").val();
         emp.Phoneno = $("#TextBoxPhone").val();
+        var checked = false;
+        if ($("#CheckBoxTech").is(":checked")) {
+            checked = true;
+        }
+        emp.IsTech = checked;
         emp.Id = localStorage.getItem("Id");
         emp.DepartmentId = $("#ddlDepts").val();
         emp.Version = localStorage.getItem("Version");
@@ -254,6 +309,7 @@ function update() {
         $("#myModal").modal("hide");
 
     }
+
     return false;
 }
 
@@ -284,14 +340,43 @@ function _delete() {
 function create() {
 
     validateEmployee();
+    emp = new Object();
+
+    var reader = new FileReader();
+    var file = $('#fileUpload')[0].files[0];
+    if (file) {
+        reader.readAsBinaryString(file);
+
+        reader.onload = function (readerEvt) {
+            var binaryString = reader.result;
+            var encodedString = btoa(binaryString);
+            emp.StaffPicture64 = encodedString;
+            performCreate();
+        }
+    }
+    else {
+        $("#modalstatus").addClass("alert alert-danger");
+        $("#modalstatus").text("You Must provide an employee picture");
+    }
+
+  
+
+}
+
+function performCreate() {
     if ($("#EmployeeModalForm").valid()) {
-        emp = new Object();
+
         emp.Title = $("#TextBoxTitle").val();
         emp.Email = $("#TextBoxEmail").val();
         emp.Firstname = $("#TextBoxFirstname").val();
         emp.Lastname = $("#TextBoxLastname").val();
         emp.Phoneno = $("#TextBoxPhone").val();
         emp.DepartmentId = $("#ddlDepts").val();
+        var checked = false;
+        if ($("#CheckBoxTech").is(":checked")) {
+            checked = true;
+        }
+        emp.IsTech = checked;
         emp.Version = 1;
 
         ajaxCall("Post", "api/employees", emp).done(function (data) {
@@ -313,5 +398,4 @@ function create() {
     }
 
     return false;
-
 }

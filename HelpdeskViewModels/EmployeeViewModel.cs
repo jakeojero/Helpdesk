@@ -20,6 +20,8 @@ namespace HelpdeskViewModels
         public string Lastname { get; set; }
         public string Email { get; set; }
         public string Phoneno { get; set; }
+        public string StaffPicture64 { get; set; }
+        public bool IsTech { get; set; }
         public int Version { get; set; }
         public string DepartmentId { get; set; }
         public string Id { get; set; }
@@ -43,6 +45,8 @@ namespace HelpdeskViewModels
                 Lastname = emp.Lastname;
                 Phoneno = emp.Phoneno;
                 Email = emp.Email;
+                StaffPicture64 = emp.StaffPicture64;
+                IsTech = emp.IsTech;
                 Id = emp.GetIdAsString();
                 DepartmentId = emp.GetDepartmentIdAsString();
                 Version = emp.Version;
@@ -68,6 +72,8 @@ namespace HelpdeskViewModels
                 Lastname = emp.Lastname;
                 Phoneno = emp.Phoneno;
                 Email = emp.Email;
+                StaffPicture64 = emp.StaffPicture64;
+                IsTech = emp.IsTech;
                 Id = emp.GetIdAsString();
                 DepartmentId = emp.GetDepartmentIdAsString();
                 Version = emp.Version;
@@ -98,6 +104,8 @@ namespace HelpdeskViewModels
                 emp.Lastname = Lastname;
                 emp.Phoneno = Phoneno;
                 emp.Email = Email;
+                emp.StaffPicture64 = StaffPicture64;
+                emp.IsTech = IsTech;
                 emp.Version = Version;
                 opStatus = _dao.Update(emp);
             }
@@ -127,6 +135,8 @@ namespace HelpdeskViewModels
                 emp.Lastname = Lastname;
                 emp.Phoneno = Phoneno;
                 emp.Email = Email;
+                emp.StaffPicture64 = StaffPicture64;
+                emp.IsTech = IsTech;
                 emp.Version = Version;
                 emp = _dao.Create(emp);
                 Id = emp.GetIdAsString();
@@ -157,6 +167,8 @@ namespace HelpdeskViewModels
                     eVM.Lastname = employee.Lastname;
                     eVM.Phoneno = employee.Phoneno;
                     eVM.Email = employee.Email;
+                    eVM.StaffPicture64 = employee.StaffPicture64;
+                    eVM.IsTech = employee.IsTech;
                     eVM.Version = employee.Version;
                     eVM.Id = employee.GetIdAsString();
                     eVM.DepartmentId = employee.GetDepartmentIdAsString();
