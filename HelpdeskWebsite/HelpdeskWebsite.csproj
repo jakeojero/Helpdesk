@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -114,6 +118,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="calls.html" />
     <Content Include="department.html" />
     <Content Include="employee - Copy.html" />
     <Content Include="employee.html" />
@@ -142,6 +147,7 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\common.js" />
     <None Include="scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="scripts\calls.js" />
     <Content Include="scripts\department.js" />
     <Content Include="scripts\employee.js" />
     <Content Include="scripts\jquery-3.1.0.js" />
@@ -157,14 +163,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CallController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\ProblemController.cs" />
     <Compile Include="Controllers\UtilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportPDF.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -183,6 +192,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="pdfs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelpdeskViewModels\HelpdeskViewModels.csproj">

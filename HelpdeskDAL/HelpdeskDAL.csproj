@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Call.cs" />
+    <Compile Include="CallDAO.cs" />
     <Compile Include="DALUtils.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="Department.cs" />
